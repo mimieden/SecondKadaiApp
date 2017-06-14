@@ -1,0 +1,82 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+var str = "Hello, playground"
+
+// 7.2 クラスの宣言
+class Car {
+    // プロパティ
+    var fuel:Int     //変数：燃料
+    var name:String  //変数：名称
+    let maxFuel = 50 //定数：燃料最大値 = 50
+    
+    // イニシャライザ
+    init() {
+        name = "車"
+        fuel = maxFuel
+    }
+    
+    // メソッド：燃料を満タンにする
+    func fillItUp() {
+        fuel = maxFuel
+    }
+    
+    // メソッド：走ると燃料が減る
+    func drive(km:Int){
+        fuel -= km * 10
+    }
+}
+
+// 7.3 クラスのインスタンスを作成して使用する
+//     クラスのインスタンスを作るには変数 = クラス名() として変数にクラスのインスタンスを代入します。
+var car = Car()            // インスタンスを作る
+                           // このタイミングでイニシャライザメソッドが呼び出されてinit内の処理が実行される
+
+//     クラスのプロパティは、インスタンスが入った変数.プロパティで使える
+print(car.name)            //初期化した状態でnameを表示
+print(car.fuel)            //初期化した状態でfuelを表示
+
+//     クラスのメソッドは、インスタンスが入った変数.メソッド()で使える
+car.drive(km: 2)           //2キロ走る→fuelが20減る
+print(car.fuel)            //2キロ走った後のfuelを表示
+car.fillItUp()             //燃料を満タンにする→fuelが最大値で設定される
+print(car.fuel)            //燃焼を満タンにした後のfuelを表示
+
+//     クラスの継承
+//     クラスをもとにして、更にクラスを定義することを継承と呼ぶ
+//     クラスを継承すると、もとのクラスの機能を全て受け継ぐ、つまりプロパティやメソッドをそのまま使える
+//     class サブクラス(子クラス): スーパークラス(親クラス)で宣言
+class SmallCar: Car {
+    override init() {      //override メソッド()とすると上書きができる
+        super.init()       //superクラスのinit()を利用→nameの初期値は車が入る
+        name = "小型車"     //nameを小型車に上書き
+    }
+    override func drive(km:Int) {
+        fuel -= km * 5
+    }
+}
+//     サブクラスのプロパティとメソッドだけではなく、スーパークラスで定義したものも使える
+var smallcar = SmallCar()
+print(smallcar.name)
+print(smallcar.fuel)
+smallcar.drive(km:2)
+print(smallcar.fuel)
+smallcar.fillItUp()
+print(smallcar.fuel)
+
+//     ここ後で見直し
+//     selfとsuper
+//     superはサブクラス内からスーパークラスのプロパティやメソッドを呼び出す際に使う
+//     selfはクラス内でクラスのプロパティか一時的な変数かを区別するために使う
+//Class Car {
+//    var fuel:Int
+//    var name:String
+//    let maxFuel:Int = 50
+    
+//    // イニシャライザ
+//    init(name: String, fuel: Int) {
+//        self.name = name
+//        self.fuel = fuel
+//    }
+//}

@@ -1,0 +1,69 @@
+// 5.値をまとめるもの
+
+//1つづつ定義された変数や定数をまとめるには配列、辞書、タプルが使える
+let drink1 = "coffee"
+let drink2 = "tea"
+let drink3 = "milk"
+
+// 5.1 配列
+//     配列は1つの定数や変数で複数の値を保持する、配列は0番目から順に値をいれていく
+//     配列は"["と"]"の間に値を並べて宣言する
+let drink10 = ["coffee", "tea", "milk"]
+var value10 = [10, 20, 30]
+//     "["と"]"で囲い、型を指定して配列を宣言することも可能
+let drink11: [String] = ["water", "coke", "juice"]     //配列の型指定
+let drink12: String = "coffee"                        //定数の型指定
+//     型を指定して宣言した場合は他の型を追加することができなくなるが
+//     型の指定でAnyを使うことで異なる型の値を配列に混在させることができます。
+var value11: [Int] = [10, 20, 30]
+var variations10: [Any] = [10, 20, "coffee"]
+//     配列の要素から値を取り出すにはインデックス番号を指定する
+print (drink10[0])
+print (drink10[1])
+print (drink10[2])
+//     forを使って順番に取り出すこともできる
+for value in drink11 {
+    print(value)
+}
+//     変数の場合は要素の追加/削除ができる
+//     要素の追加はappendメソッドを使う、appendメソッドを使うと配列の一番後ろに追加される
+value11.append(40)
+print(value11)
+//     要素の追加でinsertメソッドを使うと、指定した場所に新たな要素を追加することができる
+value11.insert(15, at:1)
+print(value11)
+//     要素の削除はremove(at:)、removeFirst()、removeLast()、removeAll()を使う
+value11.remove(at:1)
+print(value11)
+value11.removeFirst()
+print(value11)
+value11.removeLast()
+print(value11)
+value11.removeAll()
+print(value11)
+
+// 5.2 辞書
+//    辞書は要素の並びが不定でキーと値がペアとなる
+//    辞書は"["と"]"の間にキーと値を並べて宣言する
+var drink20 = ["coffee":200, "tea":300]
+//    辞書の要素にアクセスするにはキーを指定する
+print (drink20["coffee"])
+//    辞書に新たな要素を追加するには、新しいキーを指定して値をついあkする
+drink20["milk"] = 150
+print(drink20)
+//    要素の削除はremoveValue(forkey:)でキー指定で削除、removeAll()で全削除
+drink20.removeValue(forKey: "coffee")
+print(drink20)
+
+// 5.3 タプル
+// タプルは複数の値を一つの組にしたもの
+// 自然に複数の型の値を持つことができ、そのまま演算に使用することもできる
+// タプルも型推論で型が設定されるため宣言時に型を省略することが可能
+// 型を指定する場合はタプルの中身の個数だけ型を指定する必要がある
+let drink30 = ("coffee", "tea")
+var item30:(String, Int) = ("milk", 200)
+// タプルに含まれている値はそれぞれ定数または変数で個別に受け取ることができる
+var item31:(String, Int) = ("milk", 200)
+let (name, price) = item31
+print(name)
+print(price)

@@ -1,0 +1,106 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+var str = "Hello, playground"
+
+// 5.関数
+//   関数とは処理に名前をつけてまとめるもの
+
+//   1から10までを全て足した合計を表示する「処理」
+var sum: Int = 0
+for i in 1 ... 10 {
+    sum += i
+}
+print(sum)
+sum = 0
+
+//   この処理を関数としてまとめ、関数名()で使用する
+func total() {
+//  var sum: Int = 0
+    for i in 1 ... 20 {
+        sum += i
+    }
+    print(sum)
+    sum = 0
+}
+total()
+
+//   引数を使った関数①
+func total1(b:Int){
+//  var sum = 0
+    for i in 1 ... b {
+        sum += i
+    }
+    print(sum)
+    sum = 0
+}
+total1(b: 10)
+total1(b: 11)
+total1(b: 12)
+
+//   引数を使った関数②
+func total2(a:Int, b:Int) {
+    for i in a ... b {
+        sum += i
+    }
+    print(sum)
+    sum = 0
+}
+total2(a: 1, b: 2)
+total2(a: 1, b: 10)
+total2(a: 2, b: 10)
+total2(a: 2, b: 11)
+total2(a: 50, b: 1000)
+
+//   内部引数名と外部引数名→外部引数はわかりやすくする
+func total3(first a:Int, last b:Int) {
+    for i in a ... b {
+        sum += i
+    }
+    print(sum)
+    sum = 0
+}
+total3(first: 1, last: 2)
+
+//   内部引数名と外部引数名をわかりやすい記述で合わせでもOK
+func total4(first first:Int, last last:Int) {
+    for i in first ... last {
+        sum += i
+    }
+    print(sum)
+    sum = 0
+}
+total4(first: 1, last: 2)
+
+//   total4は内部引数と外部引数わけた、total5はわけていない
+func total5(first:Int, last:Int) {
+    for i in first ... last {
+        sum += i
+    }
+    print(sum)
+    sum = 0
+}
+total5(first: 1, last: 2)
+
+//   外部引数名を指定せずに関数を呼び出す場合
+func total6(_ a:Int, _ b:Int) {
+    for i in a ... b {
+        sum += i
+    }
+    print(sum)
+    sum = 0
+}
+total6(3, 5)
+
+// 関数の返り値、-> Int で返す型を明記、return sumで返せる
+func total7(first a:Int, last b:Int) -> Int {
+    sum = 0
+    for i in a...b {
+        sum += i
+    }
+    return sum
+}
+
+let number = total7(first: 50, last: 1000)
+print(number)

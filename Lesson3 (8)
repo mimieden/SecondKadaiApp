@@ -1,0 +1,33 @@
+//: Playground - noun: a place where people can play
+
+import UIKit
+
+// 8.  オプショナル型
+// 8.1 オプショナル型とnil
+//     Swiftでは基本は変数にnilを代入できないが、オプショナル型を使うとnilを代入できる
+//     オプショナル型は型の後ろに!か?をつける
+
+// 通常、nilを代入するとエラーになる
+//var str:String = "Swift"
+//str = nil
+
+// オプショナル型を利用するとエラーにならない
+var str1:String? = "Swift"
+str1 = nil
+var str2:String! = "Swift"
+str1 = nil
+
+// 8.2 オプショナル型の変数を使う
+//     オプショナル型として定義した変数(?で)はそのままでは扱えずエラーとなる
+//var a: Int? = 10
+//print(a+1)
+
+//     オプショナル型として定義した変数(?で)を使う際に!をつけると扱える
+//     ただし値がnilの可能性もあり、nilの場合はエラーがでる
+var a: Int? = 10
+print(a!+1)
+
+//     オプショナル型として定義した変数(!で)はそのままでは扱える
+//     最初はnilで宣言したいが、使うときには絶対値が入っている場合に使用する
+var b: Int! = 20
+print(b+1)
